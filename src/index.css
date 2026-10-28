@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --lexi-navy-deep: #10213A;
+    --lexi-navy-dark: #172F50;
+    --lexi-teal: #14B8A6;
+    --lexi-teal-light: #E6FFFA;
+    --lexi-bg: #F5F8FC;
+    --lexi-text-primary: #18283F;
+    --lexi-text-secondary: #64748B;
+  }
+
+  body {
+    background-color: #F5F8FC;
+    color: #18283F;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(20, 184, 166, 0.5);
+  }
+}
+
+.glow-teal {
+  animation: pulseGlow 3s ease-in-out infinite;
+}

@@ -1,0 +1,42 @@
+=== Python/TypeScript Runtime Parity: All 12 Categories ===
+Model: Logistic Regression (3000 features, 12 classes)
+
+Tag | Expected | Python | TypeScript | Parity | Expected label
+--- | --- | --- | --- | --- | ---
+| representative | Cap On Liability | Cap On Liability | Cap On Liability | MATCH | MATCH |
+| representative | Governing Law | Governing Law | Governing Law | MATCH | MATCH |
+| representative | Termination For Convenience | Termination For Convenience | Termination For Convenience | MATCH | MATCH |
+| representative | Audit Rights | Audit Rights | Audit Rights | MATCH | MATCH |
+| representative | Non-Compete | Non-Compete | Non-Compete | MATCH | MATCH |
+| representative | Anti-Assignment | Anti-Assignment | Anti-Assignment | MATCH | MATCH |
+| representative | Insurance | Insurance | Insurance | MATCH | MATCH |
+| representative | License Grant | License Grant | License Grant | MATCH | MATCH |
+| representative | Renewal Term | Notice Period To Terminate Renewal | Notice Period To Terminate Renewal | MATCH | MISMATCH |
+| representative | Notice Period To Terminate Renewal | Notice Period To Terminate Renewal | Notice Period To Terminate Renewal | MATCH | MATCH |
+| representative | Ip Ownership Assignment | Ip Ownership Assignment | Ip Ownership Assignment | MATCH | MATCH |
+| representative | Liquidated Damages | Liquidated Damages | Liquidated Damages | MATCH | MATCH |
+| ambiguous | Renewal Term | Renewal Term | Renewal Term | MATCH | MATCH |
+| ambiguous | Termination For Convenience | Termination For Convenience | Termination For Convenience | MATCH | MATCH |
+| ambiguous | Cap On Liability | Cap On Liability | Cap On Liability | MATCH | MATCH |
+| ambiguous | Anti-Assignment | Anti-Assignment | Anti-Assignment | MATCH | MATCH |
+| ambiguous | Ip Ownership Assignment | Ip Ownership Assignment | Ip Ownership Assignment | MATCH | MATCH |
+| ambiguous | Notice Period To Terminate Renewal | Notice Period To Terminate Renewal | Notice Period To Terminate Renewal | MATCH | MATCH |
+| short | Insurance | Insurance | Insurance | MATCH | MATCH |
+| short | Governing Law | Governing Law | Governing Law | MATCH | MATCH |
+| short | Audit Rights | Audit Rights | Audit Rights | MATCH | MATCH |
+| short | License Grant | License Grant | License Grant | MATCH | MATCH |
+| short | Liquidated Damages | Liquidated Damages | Liquidated Damages | MATCH | MATCH |
+| short | Non-Compete | Non-Compete | Non-Compete | MATCH | MATCH |
+
+=== Python/TypeScript Parity Summary ===
+Predicted-label agreement: 24/24
+Confidence agreement (within 0.02 pp): 24/24
+Expected-label matches (separate quality probe): 23/24
+Evidence-backed acceptable-label matches: 24/24
+Exact shared normalized Renewal/Notice texts in training partition: 82
+The renewal probe combines renewal duration and its opt-out deadline; the cached training labels contain overlapping evidence for both categories.
+Expected-label matches — representative: 11/12
+Expected-label matches — ambiguous: 6/6
+Expected-label matches — short: 6/6
+
+Category coverage: 12/12

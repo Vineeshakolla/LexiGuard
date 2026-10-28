@@ -1,0 +1,8 @@
+{
+  "name": "LexiGuard — AI Legal Clause \u0026 Risk Analyzer",
+  "description": "Understand the fine print and protect your rights with intelligent legal clause risk scoring and plain-English translation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

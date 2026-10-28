@@ -1,0 +1,3335 @@
+{
+  "generated_at": "2026-10-27T02:17:15+00:00",
+  "dataset": "Atticus Open Contract Dataset (AOK Beta / CUAD v1)",
+  "cached_dataset": "data\\preprocessed_dataset.json",
+  "category_order": [
+    "Cap On Liability",
+    "Governing Law",
+    "Termination For Convenience",
+    "Audit Rights",
+    "Non-Compete",
+    "Anti-Assignment",
+    "Insurance",
+    "License Grant",
+    "Renewal Term",
+    "Notice Period To Terminate Renewal",
+    "Ip Ownership Assignment",
+    "Liquidated Damages"
+  ],
+  "split": {
+    "method": "Same seeded split as train_and_evaluate.py: sorted training contract IDs shuffled with seed 42, then 80% fit / 20% validation",
+    "fit_contracts": 295,
+    "validation_contracts": 73,
+    "fit_samples": 3064,
+    "validation_samples": 784,
+    "test_set_used": false,
+    "leakage_check": "pass; fit and validation contract IDs are disjoint"
+  },
+  "preprocessing": {
+    "vectorizer": "TfidfVectorizer",
+    "ngram_range": [
+      1,
+      2
+    ],
+    "sublinear_tf": true,
+    "min_df": 3,
+    "norm": "l2",
+    "stop_words": "TS-aligned list reused from train_and_evaluate.py",
+    "fit_on": "fit/training portion only for each max_features value"
+  },
+  "classifier": {
+    "class": "LogisticRegression",
+    "max_iter": 300,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "selection": {
+    "primary_metric": "validation_macro_f1",
+    "tie_breaker": "smallest absolute train-validation Macro F1 gap",
+    "best_configuration": {
+      "C": 1.0,
+      "max_features": 3000
+    },
+    "best_validation_macro_f1": 88.41857964342104,
+    "best_validation_macro_f1_in_80_to_90_percent": true,
+    "lowest_macro_f1_gap_configuration": {
+      "C": 0.1,
+      "max_features": 1500,
+      "validation_macro_f1": 86.95102813972842,
+      "macro_f1_gap_train_minus_validation": 0.7241631594119298
+    },
+    "strong_regularization_configuration": {
+      "C": 0.1,
+      "max_features": 3000,
+      "validation_macro_f1": 87.49951164012377,
+      "macro_f1_gap_train_minus_validation": 0.8943837122965022
+    }
+  },
+  "configurations": [
+    {
+      "C": 1.0,
+      "max_features": 3000,
+      "vocabulary_size": 3000,
+      "train_metrics": {
+        "accuracy": 95.43080939947781,
+        "macro_precision": 91.81429960900246,
+        "macro_recall": 93.04121640287057,
+        "macro_f1": 91.79153865796317,
+        "weighted_precision": 96.06475292950627,
+        "weighted_recall": 95.43080939947781,
+        "weighted_f1": 95.47332587446824,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 99.4949494949495,
+            "recall": 97.28395061728395,
+            "f1": 98.37702871410737
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 100.0,
+            "recall": 99.64028776978418,
+            "f1": 99.81981981981983
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 93.15068493150685,
+            "recall": 95.77464788732394,
+            "f1": 94.44444444444444
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 99.01960784313727,
+            "recall": 99.50738916256158,
+            "f1": 99.26289926289927
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 93.7888198757764,
+            "recall": 99.3421052631579,
+            "f1": 96.48562300319489
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 98.9501312335958,
+            "recall": 94.72361809045226,
+            "f1": 96.79075738125802
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 99.68847352024922,
+            "recall": 98.76543209876543,
+            "f1": 99.2248062015504
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 97.63440860215053,
+            "recall": 97.00854700854701,
+            "f1": 97.32047159699893
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 84.88372093023256,
+            "recall": 54.074074074074076,
+            "f1": 66.06334841628959
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 51.49253731343284,
+            "recall": 83.13253012048193,
+            "f1": 63.594470046082954
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 95.78947368421052,
+            "recall": 98.37837837837839,
+            "f1": 97.06666666666666
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 87.87878787878788,
+            "recall": 98.86363636363636,
+            "f1": 93.04812834224599
+          }
+        ],
+        "confusion_matrix": [
+          [
+            394,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            6
+          ],
+          [
+            0,
+            277,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            136,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            404,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            151,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            4,
+            1,
+            4,
+            377,
+            0,
+            5,
+            2,
+            0,
+            3,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            320,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            5,
+            3,
+            0,
+            454,
+            0,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            73,
+            62,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            11,
+            69,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            182,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            87
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 92.98469387755102,
+        "macro_precision": 88.43157994149973,
+        "macro_recall": 88.66237393550844,
+        "macro_f1": 88.41857964342104,
+        "weighted_precision": 93.14962820250578,
+        "weighted_recall": 92.98469387755102,
+        "weighted_f1": 93.01602114162016,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 98.01980198019803,
+            "recall": 97.05882352941177,
+            "f1": 97.53694581280789
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.09523809523809,
+            "recall": 90.2439024390244,
+            "f1": 89.1566265060241
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 94.91525423728814,
+            "recall": 96.55172413793103,
+            "f1": 95.72649572649573
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 76.31578947368422,
+            "recall": 78.37837837837837,
+            "f1": 77.33333333333333
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 97.70114942528735,
+            "recall": 93.4065934065934,
+            "f1": 95.50561797752809
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 98.98989898989899,
+            "recall": 98.98989898989899,
+            "f1": 98.98989898989899
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 91.30434782608695,
+            "recall": 88.98305084745762,
+            "f1": 90.12875536480686
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 77.77777777777779,
+            "recall": 63.63636363636363,
+            "f1": 70.0
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 50.0,
+            "recall": 61.53846153846154,
+            "f1": 55.172413793103445
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 88.05970149253731,
+            "recall": 95.16129032258065,
+            "f1": 91.47286821705426
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            99,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            37,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            112,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            29,
+            1,
+            1,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            85,
+            0,
+            4,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            6,
+            1,
+            0,
+            105,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            6,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 95.43080939947781,
+      "validation_accuracy": 92.98469387755102,
+      "train_macro_f1": 91.79153865796317,
+      "validation_macro_f1": 88.41857964342104,
+      "accuracy_gap_train_minus_validation": 2.446115521926785,
+      "macro_precision_gap_train_minus_validation": 3.3827196675027267,
+      "macro_recall_gap_train_minus_validation": 4.378842467362134,
+      "macro_f1_gap_train_minus_validation": 3.3729590145421326,
+      "weighted_f1_gap_train_minus_validation": 2.457304732848087
+    },
+    {
+      "C": 0.5,
+      "max_features": 3000,
+      "vocabulary_size": 3000,
+      "train_metrics": {
+        "accuracy": 94.5822454308094,
+        "macro_precision": 90.27066443909644,
+        "macro_recall": 92.21558997293297,
+        "macro_f1": 90.82182010292011,
+        "weighted_precision": 95.11332258633051,
+        "weighted_recall": 94.5822454308094,
+        "weighted_f1": 94.65973195517056,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 99.4949494949495,
+            "recall": 97.28395061728395,
+            "f1": 98.37702871410737
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 100.0,
+            "recall": 99.64028776978418,
+            "f1": 99.81981981981983
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 89.33333333333333,
+            "recall": 94.36619718309859,
+            "f1": 91.78082191780823
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 98.52579852579852,
+            "recall": 98.76847290640394,
+            "f1": 98.6469864698647
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 89.82035928143712,
+            "recall": 98.68421052631578,
+            "f1": 94.04388714733543
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 98.6522911051213,
+            "recall": 91.95979899497488,
+            "f1": 95.18855656697009
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 99.6875,
+            "recall": 98.4567901234568,
+            "f1": 99.06832298136646
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 97.37991266375546,
+            "recall": 95.2991452991453,
+            "f1": 96.32829373650108
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 78.78787878787878,
+            "recall": 57.77777777777777,
+            "f1": 66.66666666666666
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 51.61290322580645,
+            "recall": 77.10843373493977,
+            "f1": 61.83574879227053
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 93.81443298969072,
+            "recall": 98.37837837837839,
+            "f1": 96.04221635883906
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 86.13861386138613,
+            "recall": 98.86363636363636,
+            "f1": 92.06349206349206
+          }
+        ],
+        "confusion_matrix": [
+          [
+            394,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            6
+          ],
+          [
+            0,
+            277,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            134,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            3,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            401,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            150,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            10,
+            1,
+            5,
+            366,
+            0,
+            5,
+            4,
+            0,
+            4,
+            2
+          ],
+          [
+            1,
+            0,
+            1,
+            2,
+            0,
+            0,
+            319,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            10,
+            3,
+            0,
+            446,
+            0,
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            78,
+            57,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16,
+            64,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            182,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            87
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 92.7295918367347,
+        "macro_precision": 87.85001782756301,
+        "macro_recall": 88.22807934682359,
+        "macro_f1": 87.98116100818638,
+        "weighted_precision": 92.90713858128255,
+        "weighted_recall": 92.7295918367347,
+        "weighted_f1": 92.77326714916227,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 98.98989898989899,
+            "recall": 96.07843137254902,
+            "f1": 97.51243781094527
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.09523809523809,
+            "recall": 90.2439024390244,
+            "f1": 89.1566265060241
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 94.9579831932773,
+            "recall": 97.41379310344827,
+            "f1": 96.17021276595744
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 72.5,
+            "recall": 78.37837837837837,
+            "f1": 75.32467532467533
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 97.67441860465115,
+            "recall": 92.3076923076923,
+            "f1": 94.91525423728814
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 98.98989898989899,
+            "recall": 98.98989898989899,
+            "f1": 98.98989898989899
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 91.22807017543859,
+            "recall": 88.13559322033898,
+            "f1": 89.65517241379311
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 75.0,
+            "recall": 68.18181818181817,
+            "f1": 71.42857142857143
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 50.0,
+            "recall": 53.84615384615385,
+            "f1": 51.85185185185185
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 86.76470588235294,
+            "recall": 95.16129032258065,
+            "f1": 90.76923076923077
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            98,
+            0,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            37,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            113,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            29,
+            1,
+            1,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            84,
+            0,
+            4,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            6,
+            1,
+            0,
+            104,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            15,
+            5,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 94.5822454308094,
+      "validation_accuracy": 92.7295918367347,
+      "train_macro_f1": 90.82182010292011,
+      "validation_macro_f1": 87.98116100818638,
+      "accuracy_gap_train_minus_validation": 1.8526535940746953,
+      "macro_precision_gap_train_minus_validation": 2.420646611533428,
+      "macro_recall_gap_train_minus_validation": 3.9875106261093833,
+      "macro_f1_gap_train_minus_validation": 2.840659094733738,
+      "weighted_f1_gap_train_minus_validation": 1.8864648060082914
+    },
+    {
+      "C": 0.1,
+      "max_features": 3000,
+      "vocabulary_size": 3000,
+      "train_metrics": {
+        "accuracy": 92.55874673629243,
+        "macro_precision": 87.91653185657634,
+        "macro_recall": 89.87075797846461,
+        "macro_f1": 88.39389535242027,
+        "weighted_precision": 93.18191377586126,
+        "weighted_recall": 92.55874673629243,
+        "weighted_f1": 92.62352195628578,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 98.69451697127938,
+            "recall": 93.33333333333333,
+            "f1": 95.93908629441624
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 99.63369963369964,
+            "recall": 97.84172661870504,
+            "f1": 98.72958257713249
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 79.16666666666666,
+            "recall": 93.66197183098592,
+            "f1": 85.80645161290322
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 97.55501222493888,
+            "recall": 98.27586206896551,
+            "f1": 97.91411042944786
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 86.14457831325302,
+            "recall": 94.07894736842105,
+            "f1": 89.937106918239
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 97.03504043126685,
+            "recall": 90.45226130653266,
+            "f1": 93.62808842652795
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 98.7460815047022,
+            "recall": 97.22222222222221,
+            "f1": 97.97822706065318
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 95.22776572668113,
+            "recall": 93.80341880341881,
+            "f1": 94.51022604951561
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 79.34782608695652,
+            "recall": 54.074074074074076,
+            "f1": 64.31718061674009
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 50.83333333333333,
+            "recall": 73.49397590361446,
+            "f1": 60.09852216748769
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 88.61386138613861,
+            "recall": 96.75675675675676,
+            "f1": 92.50645994832041
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 84.0,
+            "recall": 95.45454545454545,
+            "f1": 89.36170212765957
+          }
+        ],
+        "confusion_matrix": [
+          [
+            378,
+            1,
+            2,
+            4,
+            2,
+            1,
+            4,
+            5,
+            0,
+            0,
+            0,
+            8
+          ],
+          [
+            3,
+            272,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            133,
+            0,
+            0,
+            1,
+            0,
+            2,
+            0,
+            2,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            1,
+            399,
+            2,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            4,
+            0,
+            143,
+            2,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            11,
+            1,
+            6,
+            360,
+            0,
+            6,
+            3,
+            0,
+            8,
+            2
+          ],
+          [
+            1,
+            0,
+            3,
+            2,
+            0,
+            1,
+            315,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            12,
+            4,
+            0,
+            439,
+            0,
+            0,
+            10,
+            1
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0,
+            1,
+            73,
+            57,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            15,
+            61,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            3,
+            0,
+            0,
+            179,
+            1
+          ],
+          [
+            0,
+            0,
+            3,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            84
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 92.3469387755102,
+        "macro_precision": 87.1029579856688,
+        "macro_recall": 88.6092580278588,
+        "macro_f1": 87.49951164012377,
+        "weighted_precision": 92.63876887974405,
+        "weighted_recall": 92.3469387755102,
+        "weighted_f1": 92.36477648666568,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 98.96907216494846,
+            "recall": 94.11764705882352,
+            "f1": 96.4824120603015
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.37209302325581,
+            "recall": 92.6829268292683,
+            "f1": 90.47619047619048
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 94.16666666666667,
+            "recall": 97.41379310344827,
+            "f1": 95.76271186440678
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 76.31578947368422,
+            "recall": 78.37837837837837,
+            "f1": 77.33333333333333
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 96.47058823529412,
+            "recall": 90.10989010989012,
+            "f1": 93.18181818181817
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 98.98989898989899,
+            "recall": 98.98989898989899,
+            "f1": 98.98989898989899
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 90.43478260869566,
+            "recall": 88.13559322033898,
+            "f1": 89.27038626609442
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 81.25,
+            "recall": 59.09090909090909,
+            "f1": 68.42105263157895
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 52.94117647058824,
+            "recall": 69.23076923076923,
+            "f1": 60.0
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 85.5072463768116,
+            "recall": 95.16129032258065,
+            "f1": 90.07633587786259
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 81.81818181818183,
+            "recall": 100.0,
+            "f1": 90.0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            96,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            38,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            113,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            29,
+            1,
+            1,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            82,
+            0,
+            4,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            4,
+            2,
+            0,
+            104,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            13,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            9,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 92.55874673629243,
+      "validation_accuracy": 92.3469387755102,
+      "train_macro_f1": 88.39389535242027,
+      "validation_macro_f1": 87.49951164012377,
+      "accuracy_gap_train_minus_validation": 0.21180796078223807,
+      "macro_precision_gap_train_minus_validation": 0.8135738709075468,
+      "macro_recall_gap_train_minus_validation": 1.2614999506058098,
+      "macro_f1_gap_train_minus_validation": 0.8943837122965022,
+      "weighted_f1_gap_train_minus_validation": 0.25874546962010925
+    },
+    {
+      "C": 1.0,
+      "max_features": 1500,
+      "vocabulary_size": 1500,
+      "train_metrics": {
+        "accuracy": 95.13707571801567,
+        "macro_precision": 91.35947691831151,
+        "macro_recall": 92.81783818436566,
+        "macro_f1": 91.48970741267979,
+        "weighted_precision": 95.76724290427451,
+        "weighted_recall": 95.13707571801567,
+        "weighted_f1": 95.1896626340195,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 99.49367088607595,
+            "recall": 97.03703703703704,
+            "f1": 98.25
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 100.0,
+            "recall": 99.64028776978418,
+            "f1": 99.81981981981983
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 91.8918918918919,
+            "recall": 95.77464788732394,
+            "f1": 93.79310344827586
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 98.77450980392157,
+            "recall": 99.26108374384236,
+            "f1": 99.01719901719902
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 90.41916167664671,
+            "recall": 99.3421052631579,
+            "f1": 94.67084639498434
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 98.94736842105263,
+            "recall": 94.47236180904522,
+            "f1": 96.65809768637533
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 100.0,
+            "recall": 98.14814814814815,
+            "f1": 99.06542056074767
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 97.61388286334056,
+            "recall": 96.15384615384616,
+            "f1": 96.87836383207751
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 84.0909090909091,
+            "recall": 54.81481481481482,
+            "f1": 66.3677130044843
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 51.515151515151516,
+            "recall": 81.92771084337349,
+            "f1": 63.25581395348837
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 94.79166666666666,
+            "recall": 98.37837837837839,
+            "f1": 96.55172413793103
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 88.77551020408163,
+            "recall": 98.86363636363636,
+            "f1": 93.54838709677419
+          }
+        ],
+        "confusion_matrix": [
+          [
+            393,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            6
+          ],
+          [
+            0,
+            277,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            136,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            403,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            151,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            6,
+            1,
+            5,
+            376,
+            0,
+            5,
+            1,
+            0,
+            3,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            2,
+            1,
+            0,
+            318,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            8,
+            3,
+            0,
+            450,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            74,
+            61,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            12,
+            68,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            182,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            87
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 92.60204081632652,
+        "macro_precision": 87.8616974584971,
+        "macro_recall": 87.79030209569467,
+        "macro_f1": 87.63125246110928,
+        "weighted_precision": 92.73818450961643,
+        "weighted_recall": 92.60204081632652,
+        "weighted_f1": 92.6020025122115,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 97.05882352941177,
+            "recall": 97.05882352941177,
+            "f1": 97.05882352941177
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.09523809523809,
+            "recall": 90.2439024390244,
+            "f1": 89.1566265060241
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 94.91525423728814,
+            "recall": 96.55172413793103,
+            "f1": 95.72649572649573
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 77.14285714285715,
+            "recall": 72.97297297297297,
+            "f1": 75.0
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 97.72727272727273,
+            "recall": 94.5054945054945,
+            "f1": 96.08938547486034
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 98.0,
+            "recall": 98.98989898989899,
+            "f1": 98.49246231155779
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 91.30434782608695,
+            "recall": 88.98305084745762,
+            "f1": 90.12875536480686
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 76.47058823529412,
+            "recall": 59.09090909090909,
+            "f1": 66.66666666666666
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 47.05882352941176,
+            "recall": 61.53846153846154,
+            "f1": 53.333333333333336
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 86.56716417910447,
+            "recall": 93.54838709677419,
+            "f1": 89.92248062015504
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            99,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            37,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            112,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            27,
+            1,
+            2,
+            3,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            86,
+            0,
+            4,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            6,
+            1,
+            0,
+            105,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            7,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            58,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 95.13707571801567,
+      "validation_accuracy": 92.60204081632652,
+      "train_macro_f1": 91.48970741267979,
+      "validation_macro_f1": 87.63125246110928,
+      "accuracy_gap_train_minus_validation": 2.5350349016891442,
+      "macro_precision_gap_train_minus_validation": 3.49777945981441,
+      "macro_recall_gap_train_minus_validation": 5.027536088670985,
+      "macro_f1_gap_train_minus_validation": 3.8584549515705078,
+      "weighted_f1_gap_train_minus_validation": 2.5876601218079998
+    },
+    {
+      "C": 0.5,
+      "max_features": 1500,
+      "vocabulary_size": 1500,
+      "train_metrics": {
+        "accuracy": 94.22323759791122,
+        "macro_precision": 89.7502274418375,
+        "macro_recall": 91.80542253755945,
+        "macro_f1": 90.3894477986285,
+        "weighted_precision": 94.7619773568138,
+        "weighted_recall": 94.22323759791122,
+        "weighted_f1": 94.31253404432692,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 99.48979591836735,
+            "recall": 96.29629629629629,
+            "f1": 97.86700125470514
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 100.0,
+            "recall": 99.64028776978418,
+            "f1": 99.81981981981983
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 88.1578947368421,
+            "recall": 94.36619718309859,
+            "f1": 91.15646258503402
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 98.52579852579852,
+            "recall": 98.76847290640394,
+            "f1": 98.6469864698647
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 86.54970760233918,
+            "recall": 97.36842105263158,
+            "f1": 91.64086687306502
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 98.38709677419355,
+            "recall": 91.95979899497488,
+            "f1": 95.06493506493506
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 99.68652037617555,
+            "recall": 98.14814814814815,
+            "f1": 98.9113530326594
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 97.36263736263736,
+            "recall": 94.65811965811966,
+            "f1": 95.99133261105092
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 78.21782178217822,
+            "recall": 58.51851851851851,
+            "f1": 66.94915254237289
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 51.2396694214876,
+            "recall": 74.69879518072288,
+            "f1": 60.78431372549019
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 92.38578680203045,
+            "recall": 98.37837837837839,
+            "f1": 95.28795811518324
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 87.0,
+            "recall": 98.86363636363636,
+            "f1": 92.5531914893617
+          }
+        ],
+        "confusion_matrix": [
+          [
+            390,
+            0,
+            1,
+            2,
+            3,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            6
+          ],
+          [
+            0,
+            277,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            134,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            3,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            401,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            148,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            11,
+            1,
+            6,
+            366,
+            0,
+            5,
+            3,
+            0,
+            4,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            2,
+            1,
+            0,
+            318,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            11,
+            3,
+            0,
+            443,
+            0,
+            0,
+            9,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            79,
+            56,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            18,
+            62,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            182,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            87
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 92.3469387755102,
+        "macro_precision": 87.11478141020402,
+        "macro_recall": 87.25531513876527,
+        "macro_f1": 87.10328956180877,
+        "weighted_precision": 92.46293117900956,
+        "weighted_recall": 92.3469387755102,
+        "weighted_f1": 92.35452321116428,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 98.01980198019803,
+            "recall": 97.05882352941177,
+            "f1": 97.53694581280789
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.09523809523809,
+            "recall": 90.2439024390244,
+            "f1": 89.1566265060241
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 94.16666666666667,
+            "recall": 97.41379310344827,
+            "f1": 95.76271186440678
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 70.27027027027027,
+            "recall": 70.27027027027027,
+            "f1": 70.27027027027027
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 97.67441860465115,
+            "recall": 92.3076923076923,
+            "f1": 94.91525423728814
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 98.0,
+            "recall": 98.98989898989899,
+            "f1": 98.49246231155779
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 92.03539823008849,
+            "recall": 88.13559322033898,
+            "f1": 90.04329004329004
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 73.68421052631578,
+            "recall": 63.63636363636363,
+            "f1": 68.29268292682927
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 46.666666666666664,
+            "recall": 53.84615384615385,
+            "f1": 50.0
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 86.76470588235294,
+            "recall": 95.16129032258065,
+            "f1": 90.76923076923077
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            99,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            37,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            113,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            2,
+            1,
+            26,
+            1,
+            2,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            84,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            6,
+            1,
+            0,
+            104,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            6,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 94.22323759791122,
+      "validation_accuracy": 92.3469387755102,
+      "train_macro_f1": 90.3894477986285,
+      "validation_macro_f1": 87.10328956180877,
+      "accuracy_gap_train_minus_validation": 1.8762988224010257,
+      "macro_precision_gap_train_minus_validation": 2.635446031633478,
+      "macro_recall_gap_train_minus_validation": 4.550107398794182,
+      "macro_f1_gap_train_minus_validation": 3.2861582368197304,
+      "weighted_f1_gap_train_minus_validation": 1.9580108331626462
+    },
+    {
+      "C": 0.1,
+      "max_features": 1500,
+      "vocabulary_size": 1500,
+      "train_metrics": {
+        "accuracy": 91.97127937336815,
+        "macro_precision": 87.14934967063864,
+        "macro_recall": 89.23913351157431,
+        "macro_f1": 87.67519129914035,
+        "weighted_precision": 92.66883198873735,
+        "weighted_recall": 91.97127937336815,
+        "weighted_f1": 92.05850243150137,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 405,
+            "precision": 97.91666666666666,
+            "recall": 92.8395061728395,
+            "f1": 95.31051964512041
+          },
+          {
+            "category": "Governing Law",
+            "support": 278,
+            "precision": 99.63369963369964,
+            "recall": 97.84172661870504,
+            "f1": 98.72958257713249
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 142,
+            "precision": 77.32558139534885,
+            "recall": 93.66197183098592,
+            "f1": 84.71337579617835
+          },
+          {
+            "category": "Audit Rights",
+            "support": 406,
+            "precision": 97.2972972972973,
+            "recall": 97.53694581280789,
+            "f1": 97.41697416974169
+          },
+          {
+            "category": "Non-Compete",
+            "support": 152,
+            "precision": 83.8323353293413,
+            "recall": 92.10526315789474,
+            "f1": 87.7742946708464
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 398,
+            "precision": 97.02702702702702,
+            "recall": 90.20100502512562,
+            "f1": 93.48958333333334
+          },
+          {
+            "category": "Insurance",
+            "support": 324,
+            "precision": 98.73417721518987,
+            "recall": 96.29629629629629,
+            "f1": 97.5
+          },
+          {
+            "category": "License Grant",
+            "support": 468,
+            "precision": 95.18599562363238,
+            "recall": 92.94871794871796,
+            "f1": 94.05405405405406
+          },
+          {
+            "category": "Renewal Term",
+            "support": 135,
+            "precision": 79.34782608695652,
+            "recall": 54.074074074074076,
+            "f1": 64.31718061674009
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 83,
+            "precision": 50.42016806722689,
+            "recall": 72.28915662650603,
+            "f1": 59.4059405940594
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 185,
+            "precision": 86.89320388349515,
+            "recall": 96.75675675675676,
+            "f1": 91.56010230179028
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 88,
+            "precision": 82.17821782178217,
+            "recall": 94.31818181818183,
+            "f1": 87.83068783068782
+          }
+        ],
+        "confusion_matrix": [
+          [
+            376,
+            1,
+            1,
+            4,
+            3,
+            1,
+            4,
+            5,
+            0,
+            0,
+            0,
+            10
+          ],
+          [
+            3,
+            272,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            133,
+            0,
+            0,
+            1,
+            0,
+            2,
+            0,
+            2,
+            1,
+            3
+          ],
+          [
+            1,
+            0,
+            2,
+            396,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            2,
+            2
+          ],
+          [
+            1,
+            0,
+            5,
+            1,
+            140,
+            2,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            12,
+            1,
+            6,
+            359,
+            0,
+            6,
+            3,
+            0,
+            9,
+            1
+          ],
+          [
+            2,
+            0,
+            3,
+            2,
+            1,
+            2,
+            312,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            14,
+            4,
+            0,
+            435,
+            0,
+            0,
+            12,
+            1
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0,
+            1,
+            73,
+            57,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            15,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            3,
+            0,
+            0,
+            179,
+            1
+          ],
+          [
+            0,
+            0,
+            4,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            83
+          ]
+        ]
+      },
+      "validation_metrics": {
+        "accuracy": 91.70918367346938,
+        "macro_precision": 86.6793736479317,
+        "macro_recall": 87.53996191803772,
+        "macro_f1": 86.95102813972842,
+        "weighted_precision": 91.8720863380147,
+        "weighted_recall": 91.70918367346938,
+        "weighted_f1": 91.6999773788119,
+        "per_class": [
+          {
+            "category": "Cap On Liability",
+            "support": 102,
+            "precision": 98.9795918367347,
+            "recall": 95.09803921568627,
+            "f1": 97.0
+          },
+          {
+            "category": "Governing Law",
+            "support": 74,
+            "precision": 100.0,
+            "recall": 100.0,
+            "f1": 100.0
+          },
+          {
+            "category": "Termination For Convenience",
+            "support": 41,
+            "precision": 88.37209302325581,
+            "recall": 92.6829268292683,
+            "f1": 90.47619047619048
+          },
+          {
+            "category": "Audit Rights",
+            "support": 116,
+            "precision": 92.56198347107438,
+            "recall": 96.55172413793103,
+            "f1": 94.51476793248945
+          },
+          {
+            "category": "Non-Compete",
+            "support": 37,
+            "precision": 70.27027027027027,
+            "recall": 70.27027027027027,
+            "f1": 70.27027027027027
+          },
+          {
+            "category": "Anti-Assignment",
+            "support": 91,
+            "precision": 96.47058823529412,
+            "recall": 90.10989010989012,
+            "f1": 93.18181818181817
+          },
+          {
+            "category": "Insurance",
+            "support": 99,
+            "precision": 97.02970297029702,
+            "recall": 98.98989898989899,
+            "f1": 98.0
+          },
+          {
+            "category": "License Grant",
+            "support": 118,
+            "precision": 91.07142857142857,
+            "recall": 86.4406779661017,
+            "f1": 88.69565217391305
+          },
+          {
+            "category": "Renewal Term",
+            "support": 22,
+            "precision": 77.77777777777779,
+            "recall": 63.63636363636363,
+            "f1": 70.0
+          },
+          {
+            "category": "Notice Period To Terminate Renewal",
+            "support": 13,
+            "precision": 53.333333333333336,
+            "recall": 61.53846153846154,
+            "f1": 57.14285714285714
+          },
+          {
+            "category": "Ip Ownership Assignment",
+            "support": 62,
+            "precision": 84.28571428571429,
+            "recall": 95.16129032258065,
+            "f1": 89.39393939393939
+          },
+          {
+            "category": "Liquidated Damages",
+            "support": 9,
+            "precision": 90.0,
+            "recall": 100.0,
+            "f1": 94.73684210526315
+          }
+        ],
+        "confusion_matrix": [
+          [
+            97,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            38,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            112,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            1,
+            26,
+            1,
+            3,
+            3,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            82,
+            0,
+            4,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            5,
+            2,
+            0,
+            102,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            14,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            59,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9
+          ]
+        ]
+      },
+      "train_accuracy": 91.97127937336815,
+      "validation_accuracy": 91.70918367346938,
+      "train_macro_f1": 87.67519129914035,
+      "validation_macro_f1": 86.95102813972842,
+      "accuracy_gap_train_minus_validation": 0.26209569989876513,
+      "macro_precision_gap_train_minus_validation": 0.4699760227069447,
+      "macro_recall_gap_train_minus_validation": 1.6991715935365903,
+      "macro_f1_gap_train_minus_validation": 0.7241631594119298,
+      "weighted_f1_gap_train_minus_validation": 0.35852505268947255
+    }
+  ],
+  "production_artifacts_modified": false
+}
